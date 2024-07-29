@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Lista de Encontros</title>
+    <style>
+        body {
+            background-color: #eafaf1;
+        }
+        .navbar {
+            background-color: #007bff;
+        }
+        .navbar-brand {
+            color: #ffffff;
+        }
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #007bff;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        table {
+            background-color: #ffffff;
+            border: 1px solid #007bff;
+        }
+        th, td {
+            color: #333;
+        }
+        th {
+            background-color: #d1ecf1;
+        }
+        .table thead th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Lista de Encontros</a>
+    </div>
+</nav>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="card-title">Encontros</h1>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Usuário</th>
+                                <th scope="col">Data</th>
+                                <th scope="col">Descrição</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for encontro in encontros %}
+                                <tr>
+                                    <td>{{ encontro.usuario.nome }}</td>
+                                    <td>{{ encontro.data }}</td>
+                                    <td>{{ encontro.descricao }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

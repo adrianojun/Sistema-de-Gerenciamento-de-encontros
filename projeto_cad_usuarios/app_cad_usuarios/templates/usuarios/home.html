@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f8ff;
+        }
+        .navbar {
+            background-color: #007bff;
+        }
+        .navbar-brand {
+            color: #fff !important;
+        }
+        .card {
+            border: 1px solid #007bff;
+            cursor: pointer;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+    <title>Cadastre-me</title>
+</head>
+<body>
+<nav class="navbar navbar-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Instituto Pe. Mario Rocchi</a>
+    </div>
+</nav>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4 mb-4">
+            <div class="card text-center" onclick="location.href='{% url 'cadastrar_usuario' %}'">
+                <div class="card-body">
+                    <h5 class="card-title">Cadastrar Usuário</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card text-center" onclick="location.href='{% url 'acompanhamento_geral' %}'">
+                <div class="card-body">
+                    <h5 class="card-title">Acompanhamento</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
