@@ -78,7 +78,7 @@ def acompanhamento(request, usuario_id):
 
 def acompanhamento_geral(request):
     usuarios = Usuario.objects.all()
-    return render(request, 'usuarios/acompanhamento_geral.html', {'usuarios': usuarios})
+    return render(request, 'usuarios/usuarios.html', {'usuarios': usuarios})
 
 
 

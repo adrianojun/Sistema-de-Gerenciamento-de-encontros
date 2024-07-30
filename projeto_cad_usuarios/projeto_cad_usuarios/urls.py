@@ -4,6 +4,7 @@ from app_cad_usuarios import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('usuarios/', views.usuarios, name='listagem_usuarios'),
+    path('usuarios/', views.usuarios, name='usuarios'),
     path('cadastrar_usuario/', views.cadastrar_usuario, name='cadastrar_usuario'),
     path('agendar_encontro/<int:usuario_id>/', views.agendar_encontro, name='agendar_encontro'),
     path('agendar_encontro/', views.agendar_encontro_sem_usuario, name='agendar_encontro_sem_usuario'),
@@ -12,5 +13,4 @@ urlpatterns = [
     path('acompanhamento/<int:usuario_id>/', views.acompanhamento, name='acompanhamento'),
     path('usuarios_com_encontros/', views.usuarios_com_encontros, name='usuarios_com_encontros'),
     path('excluir_usuario/<int:usuario_id>/', views.excluir_usuario, name='excluir_usuario'),
-    path('acompanhamento_geral/', views.acompanhamento_geral, name='acompanhamento_geral'),
 ]
