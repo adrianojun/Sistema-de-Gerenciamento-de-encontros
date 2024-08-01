@@ -12,6 +12,7 @@ class Usuario(models.Model):
 class Encontro(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='encontros')
     data = models.DateTimeField()
+    horario = models.TimeField(default='00:00')
     descricao = models.TextField()
 
     def __str__(self):

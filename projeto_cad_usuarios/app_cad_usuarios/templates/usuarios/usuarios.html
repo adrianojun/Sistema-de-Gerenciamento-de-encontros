@@ -13,7 +13,7 @@
             background-color: #007bff;
         }
         .navbar-brand {
-            color: #ffffff;
+            color: #fff !important;
         }
         .card {
             background-color: #ffffff;
@@ -69,7 +69,7 @@
             <div class="card">
                 <div class="card-header">
                     <h1 class="card-title">Lista de Usuários</h1>
-                    <button class="btn btn-primary" id="filter-btn">Filtrar</button>
+                    <button class="btn btn-secondary" id="filter-btn">Filtrar</button>
                 </div>
                 <div class="card-body">
                     <form method="GET" action="" class="mb-4 filter-form" id="filter-form">
@@ -131,8 +131,8 @@
                             </table>
                         </div>
                     </div>
-                    <div class="mt-3">
-                        <a href="{% url 'home' %}" class="btn btn-secondary">Voltar para Tela Inicial</a>
+                    <div class="mt-3 d-flex justify-content-end">
+                        <a href="{% url 'home' %}" class="btn btn-warning">Voltar para Tela Inicial</a>
                     </div>
                 </div>
             </div>
