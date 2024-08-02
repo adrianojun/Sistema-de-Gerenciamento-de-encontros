@@ -3,7 +3,6 @@ from app_cad_usuarios import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('usuarios/', views.usuarios, name='listagem_usuarios'),
     path('usuarios/', views.usuarios, name='usuarios'),
     path('cadastrar_usuario/', views.cadastrar_usuario, name='cadastrar_usuario'),
     path('agendar_encontro/<int:usuario_id>/', views.agendar_encontro, name='agendar_encontro'),

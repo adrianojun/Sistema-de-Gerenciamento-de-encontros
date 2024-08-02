@@ -55,7 +55,7 @@ def usuarios_com_encontros(request):
 
 
 def agendar_encontro_sem_usuario(request):
-    return redirect('listagem_usuarios')
+    return redirect('usuarios')
 
 
 
@@ -87,7 +87,7 @@ def cadastrar_usuario(request):
         form = UsuarioForm(request.POST)
         if form.is_valid():
             form.save()  # Salva o formulário
-            return redirect('listagem_usuarios')  # Redireciona após salvar
+            return redirect('usuarios')  # Redireciona após salvar
     else:
         form = UsuarioForm()
     
@@ -97,4 +97,4 @@ def cadastrar_usuario(request):
 def excluir_usuario(request, usuario_id):
     usuario = get_object_or_404(Usuario, id_usuario=usuario_id)
     usuario.delete()
-    return redirect('listagem_usuarios')
+    return redirect('usuarios')
