@@ -34,20 +34,41 @@ def selecionar_usuario(request):
     return render(request, 'usuarios/selecionar_usuario.html', {'usuarios': usuarios})
 
 def agendar_encontro(request, usuario_id):
+    usuario = get_object_or_404(Usuario, id_usuario=usuario_id)
+    
     if request.method == 'POST':
-        encontro = Encontro()
-        encontro.usuario_id = usuario_id
-        encontro.data = request.POST.get('data') + 'T' + request.POST.get('horario')  # Combine data e horário
-        encontro.descricao = request.POST.get('descricao')
-        encontro.save()
-        return redirect('listagem_usuarios')
+        data = request.POST.get('data')
+        horario = request.POST.get('horario')
+        descricao = request.POST.get('descricao')
+        
+        # Combine data e horário em um DateTimeField
+        data_horario = f"{data}T{horario}"
+        
+        # Verificar se já existe um encontro no mesmo horário
+        if Encontro.objects.filter(data=data_horario, usuario=usuario).exists():
+            form_errors = ["Já existe um encontro agendado para esse horário."]
+            return render(request, 'usuarios/agendar_encontro.html', {'usuario_id': usuario_id, 'form_errors': form_errors})
+        
+        # Criar o novo encontro
+        Encontro.objects.create(
+            usuario=usuario,
+            data=data_horario,
+            descricao=descricao
+        )
+        
+        return redirect('listagem_agendamento')
 
     return render(request, 'usuarios/agendar_encontro.html', {'usuario_id': usuario_id})
-
 
 def listagem_encontros(request):
     encontros = Encontro.objects.all()
     return render(request, 'usuarios/listagem_encontros.html', {'encontros': encontros})
+
+
+def listagem_simples_encontros(request):
+    encontros = Encontro.objects.all()
+    return render(request, 'usuarios/listagem_agendamento.html', {'encontros': encontros})
+
 
 def usuarios_com_encontros(request):
     usuarios = Usuario.objects.filter(encontro__isnull=False).distinct()
@@ -98,3 +119,9 @@ def excluir_usuario(request, usuario_id):
     usuario = get_object_or_404(Usuario, id_usuario=usuario_id)
     usuario.delete()
     return redirect('usuarios')
+
+
+def excluir_encontro(request, encontro_id):
+    encontro = get_object_or_404(Encontro, id=encontro_id)
+    encontro.delete()
+    return redirect('listagem_agendamento')

@@ -12,4 +12,6 @@ urlpatterns = [
     path('acompanhamento/<int:usuario_id>/', views.acompanhamento, name='acompanhamento'),
     path('usuarios_com_encontros/', views.usuarios_com_encontros, name='usuarios_com_encontros'),
     path('excluir_usuario/<int:usuario_id>/', views.excluir_usuario, name='excluir_usuario'),
+    path('listagem_agendamento/', views.listagem_simples_encontros, name='listagem_agendamento'), 
+    path('excluir_encontro/<int:encontro_id>/', views.excluir_encontro, name='excluir_encontro'), 
 ]
