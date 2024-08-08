@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from app_cad_usuarios import views
 
 urlpatterns = [
@@ -14,4 +14,5 @@ urlpatterns = [
     path('excluir_usuario/<int:usuario_id>/', views.excluir_usuario, name='excluir_usuario'),
     path('listagem_agendamento/', views.listagem_simples_encontros, name='listagem_agendamento'), 
     path('excluir_encontro/<int:encontro_id>/', views.excluir_encontro, name='excluir_encontro'), 
+    path('accounts/', include('allauth.urls')),
 ]

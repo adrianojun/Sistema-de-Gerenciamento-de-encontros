@@ -22,6 +22,15 @@
             background-color: #007bff;
             color: #fff;
         }
+        .btn-logout {
+            color: #fff;
+            background-color: #dc3545; /* Cor vermelha para o botão de logout */
+            border: none;
+            border-radius: 0.25rem;
+        }
+        .btn-logout:hover {
+            background-color: #c82333; /* Tom mais escuro de vermelho no hover */
+        }
     </style>
     <title>Cadastre-me</title>
 </head>
@@ -29,6 +38,12 @@
 <nav class="navbar navbar-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Instituto Pe. Mario Rocchi</a>
+        {% if user.is_authenticated %}
+            <form method="post" action="{% url 'account_logout' %}" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-logout">Logout</button>
+            </form>
+        {% endif %}
     </div>
 </nav>
 <div class="container mt-5">
